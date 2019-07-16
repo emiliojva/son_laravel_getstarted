@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <style>
+
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -62,9 +63,25 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            debug {
+                font-weight: bold;
+                display: block;
+                border: 1px solid #636b6f;
+                padding: 10px;
+            }
+
+            debug:before {
+                content: "";
+            }
+
+            debug:after{
+                content: "";
+            }
         </style>
     </head>
     <body>
+
         <div class="flex-center position-ref full-height">
 
             @if (Route::has('login'))
@@ -79,9 +96,16 @@
             @endif
 
             <div class="content">
+
                 <div class="title m-b-md">
-                    Laravel
+
+                    @section('header')
+
+                    @show
+
                 </div>
+
+                @yield('content')
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
@@ -90,7 +114,11 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
             </div>
+
         </div>
+
     </body>
+
 </html>

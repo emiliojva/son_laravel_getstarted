@@ -92,6 +92,21 @@ Route::get('aula7/blade', function () {
 
 });
 
+
+/**
+ * Aula 8
+ * Mais detalhes sobre a interpolação do Blade
+ *
+ */
+
+Route::get('aula8/blade', function () {
+
+    $nome = "Teste";
+    $variavel1 = 10;
+    return view('aula8.getstarted-blade', compact(['nome', 'variavel1']));
+
+});
+
 /**
  * CoC Convention over Configuration
  */
