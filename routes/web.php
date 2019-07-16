@@ -107,6 +107,37 @@ Route::get('aula8/blade', function () {
 
 });
 
+
+
+/**
+ * Aula 9
+ * Blade - estruturas condicionais e de repetição
+ * for-if
+ *
+ */
+
+Route::get('aula9/blade', function () {
+
+    $value = 10;
+
+    $myArray = [
+        'chave1' => 'valor1',
+        'chave2' => 'valor2',
+        'chave3' => 'valor3',
+    ];
+
+    return view('aula9.getstarted-blade', compact(['value','myArray']));
+
+});
+
+/**
+ * Aula 10
+ *
+ * Artisan Commands
+ * php artisan route:list
+ *
+ */
+
 /**
  * CoC Convention over Configuration
  */
