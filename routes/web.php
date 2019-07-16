@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cliente',function(){
+Route::get('/cliente', function () {
     return "Hello World";
 });
 
@@ -24,9 +24,9 @@ Route::get('/cliente',function(){
 /**
  *  Aula 4 - Rotas amigáveis
  */
-Route::get('/cliente/{name}/{age}',function($name,$age){
+Route::get('/cliente/{name}/{age}', function ($name, $age) {
 
-    $urlRouteCurrent = route('helloWorld',[$name,$age]);
+    $urlRouteCurrent = route('helloWorld', [$name, $age]);
 
     /**
      * HereDocs
@@ -39,18 +39,18 @@ HTML;
 
     return $template;
 })
-->where(['name'=>'[a-z]+', 'age'=>'[0-9]+'])
-->name('helloWorld');
+    ->where(['name' => '[a-z]+', 'age' => '[0-9]+'])
+    ->name('helloWorld');
 
 /**
  * Aula 5
  * Rotas amigáveis POST e formulários. Formulario de Post com CSRF - Cross Site Request Forgery
  */
-Route::get('/aula5/cliente/formulario',function (){
+Route::get('/aula5/cliente/formulario', function () {
     return view('aula5.cliente.formulario');
 
 });
-Route::post('/aula5/cliente/cadastrar',function(\Illuminate\Http\Request $request){
+Route::post('/aula5/cliente/cadastrar', function (\Illuminate\Http\Request $request) {
     echo $request->get('name');
 });
 
@@ -59,25 +59,38 @@ Route::post('/aula5/cliente/cadastrar',function(\Illuminate\Http\Request $reques
  * Aula 6
  * View - Criando Views e Passando Paramentros.
  */
-Route::get('/aula6/cliente/cadastrar',function(){
+Route::get('/aula6/cliente/cadastrar', function () {
 
-    $nomes = ['Giovana','Mateus','Rosi','Emilio'];
+    $nomes = ['Giovana', 'Mateus', 'Rosi', 'Emilio'];
 
     $sobrenomes = ['Vieira', 'Galdino', 'Amaral', 'Oliveira'];
 
     // embaralhar sobrenomes
     shuffle($sobrenomes);
 
-    return view('aula6.cliente.cadastrar' , compact( ['nomes','sobrenomes'] ));
+    return view('aula6.cliente.cadastrar', compact(['nomes', 'sobrenomes']));
 
     // Ou
     return view('aula6.cliente.cadastrar')
-        ->with('nomes',$nomes)
-        ->with('sobrenomes',$sobrenomes);
+        ->with('nomes', $nomes)
+        ->with('sobrenomes', $sobrenomes);
 
 });
 
+/**
+ * Aula 7
+ * Iniciando com Blade
+ * O Parse do .blade é transformado em <?php na pasta /storage/framework/views
+ *
+ */
 
+Route::get('aula7/blade', function () {
+
+    $nome = "Teste";
+    $variavel1 = 10;
+    return view('aula7.getstarted-blade', compact(['nome', 'variavel1']));
+
+});
 
 /**
  * CoC Convention over Configuration
