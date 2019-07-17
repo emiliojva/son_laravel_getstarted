@@ -135,9 +135,24 @@ Route::get('aula9/blade', function () {
  *
  * Artisan Commands
  * php artisan route:list
+ * php artisan make:controller ClientsController
+ *
+ */
+
+//
+
+/**
+ * Aula 11
+ *
+ * Criando controllers
  *
  */
 
 /**
+ * Convenções e Termos
  * CoC Convention over Configuration
+ * MVC - Model View Controller
+ * StudlyCaps - Formato
+ * php artisan make:controller ClientsController
  */
+Route::get('aula12/controller/cliente/cadastrar','ClientController@cadastrar');
