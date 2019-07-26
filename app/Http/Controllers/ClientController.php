@@ -10,7 +10,17 @@ class ClientController extends Controller
     public function cadastrar()
     {
         $variavel1 = "Teste Var Controllers";
-        return view('aula12.cliente.cadastrar',compact(['variavel1']));
+        return view('aula12.cliente.cadastrar', compact(['variavel1']));
+    }
+
+    public function excluir()
+    {
+
+    }
+
+    public function editar()
+    {
+
     }
 
 }

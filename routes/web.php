@@ -196,3 +196,54 @@ Route::group(['prefix'=>'/aula13'],function(){
         dump($_ENV); // Super Variable Global $_ENV // native PHP
     });
 });
+
+/**
+ * Aula 14/15/16/17
+ *
+ * 14 - Iniciando com Eloquent ORM
+ *      Laravel works with migrations
+ *
+ * 15 - Iniciando sistema de migrations
+ *      > Creates table with migration
+ *      > New migration into subfolder \database\migrations\* only struture table name as clients
+ *          λ php artisan make:migration create_clients_table --create=clients
+ *
+ *      > Error Exceptions Migration up at 5.4 version laravel
+ *          Set the default string length for migrations ->  \Schema::defaultStringLength(191);
+ *
+ * 16 - Prática com sistema de migrations
+ *      > Migrations > Schema::create
+ *          $table->increments('id'); // primary key AUTO_INCREMENT
+ *          $table->timestamps(); // created_at e updated_at
+ *
+ * 17 - Prática com Eloquent usando Tinker
+ *      > Tinker ( REPL - Read Eval Print Loop ) - 3rs Parts
+ *          λ php artisan tinker
+ *
+ *      > Eloquent System Conventions (plurals or Singular)
+ *          Model with name 'Category' in plural english equals 'Categories'
+ *
+ *      > Fetch All Object from current Model Client(entity clients from db)
+            λ \App\Models\Client::all();
+               returns Illuminate\Database\Eloquent\Collection like:
+
+                   all: [
+                        App\Models\Client {#2922
+                        id: 1,
+                        name: "Emilio",
+                        email: "emilio@sr2.uerj.br",
+                        created_at: "2019-07-26 17:51:57",
+                        updated_at: "2019-07-26 17:51:57",
+                        },
+                    ],
+        > Save new active record row
+           $client = new App\Models\Client();
+           $client->name = 'Emilio';
+           $client->email = 'emilio@sr2.uerj.br';
+           $client->save();
+        > fetch row to variable $client
+            $client = App\Models\Client::find(1);
+
+        > delete row
+            $client->delete();
+ */
