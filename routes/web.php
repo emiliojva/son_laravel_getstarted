@@ -155,4 +155,44 @@ Route::get('aula9/blade', function () {
  * StudlyCaps - Formato
  * php artisan make:controller ClientsController
  */
-Route::get('aula12/controller/cliente/cadastrar','ClientController@cadastrar');
+Route::get('aula11/controller/cliente/cadastrar','ClientController@cadastrar');
+
+
+
+/**
+ * Aula 12
+ *
+ * Route Groups
+ *
+ * Criar controllers dentro de subdiretorios do App\Http\Controllers\Admin;
+ * php artisan make:controller Admin\Controller
+ *
+ */
+
+Route::group(['prefix'=>'/aula12/cliente'],function(){
+   Route::get('cadastrar','ClientController@cadastrar');
+   Route::get('excluir','ClientController@cadastrar');
+   Route::get('alterar','ClientController@cadastrar');
+   Route::get('editar','ClientController@cadastrar');
+});
+
+
+
+/**
+ * Aula 13
+ *
+ * dot envs (.env)
+ *
+ * only developments enviromments (DANGEROUS IN PRODUCTION)
+ *
+ * note: need enabling in variables_order and add "E = > envs ou environments", in php.ini
+ * staying "EGPCS" => ENV / GET / POST / COOKIE / ENV / SERVER
+ */
+
+Route::group(['prefix'=>'/aula13'],function(){
+    Route::get('env',function(){
+        dump( env('nome') ); // helper's laravel
+        dump( getenv('nome') ); // native's function php
+        dump($_ENV); // Super Variable Global $_ENV // native PHP
+    });
+});

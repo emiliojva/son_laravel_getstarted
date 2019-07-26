@@ -9,11 +9,10 @@
 
 @extends('layouts.base')
 
-@section('header','Aula 12 - Agrupamento de rotas de boas práticas')
+@section('header','Aula 12 - Criando controllers')
 
 @section('content')
 
     <h3>{{ $variavel1 }}</h3>
 
 @endsection
-
