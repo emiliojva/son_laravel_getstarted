@@ -247,3 +247,25 @@ Route::group(['prefix'=>'/aula13'],function(){
         > delete row
             $client->delete();
  */
+
+
+/**
+ * Aula 18 - CRUD
+ *
+ * Create Retrieve Update Delete
+ *
+ */
+
+use App\Http\Controllers\Admin\ClientController;
+
+Route::group(['prefix'=>'/admin'], function () {
+
+    Route::get('/clientes', 'Admin\ClientController@retrieve');
+    Route::get('/clientes/cadatrar', 'Admin\ClientController@create');
+    Route::get('/clientes/editar', 'Admin\ClientController@update');
+
+    // salva cliente
+    Route::post('/clientes/cadastrar', 'AdminClienteController@save');
+
+
+});
