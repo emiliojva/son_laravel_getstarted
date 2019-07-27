@@ -9,11 +9,15 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use Illuminate\Http\Request;
 
 class ClientController   extends Controller
 {
 
-    public function create(){}
+    public function create()
+    {
+        return view('tcc.cliente.create');
+    }
     public function retrieve()
     {
         $clients = Client::all('*');
@@ -21,5 +25,19 @@ class ClientController   extends Controller
     }
     public function update(){}
     public function delete(){}
+    public function save(Request $request)
+    {
+
+        $client = new Client(); //        $client->forceFill($request->post('data'));
+
+        if(isset($request->data['id']))
+            $client->id = $request->data['id'];
+
+        $client->name = $request->data['name'];
+        $client->email = $request->data['email'];
+        $client->save();
+
+        return redirect()->to('/admin/clientes');
+    }
 
 }
