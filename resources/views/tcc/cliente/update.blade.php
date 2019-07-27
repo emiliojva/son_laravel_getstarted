@@ -5,7 +5,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Cadastrar Cliente</title>
+        <title>Editar Cliente</title>
 
         <style>
 
@@ -42,21 +42,23 @@
 
         <form method="POST" action="/admin/clientes/gravar">
 
-            <h3>Cadastrar</h3>
+            <h3>Editar Cliente {{ explode(' ',$cliente->name)[0] }}</h3>
 
             {!! csrf_field() !!}
 
+            <input type="hidden" name="data[id]" value="{{ $cliente->id }}" />
+
             <label for="name">Nome</label>
-            <input type="text" id="name" name="data[name]">
+            <input type="text" id="name" name="data[name]"  value="{{ $cliente->name }}" />
 
             <br>
 
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="data[email]">
+            <input type="email" id="email" name="data[email]" value="{{ $cliente->email }}"/>
 
             <br>
 
-            <button type="submit">Enviar</button>
+            <button type="submit">Gravar</button>
             <button type="button" onclick="window.location.href = '/admin/clientes'">Voltar</button>
 
         </form>

@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ClientController   extends Controller
@@ -23,15 +24,47 @@ class ClientController   extends Controller
         $clients = Client::all('*');
         return view('tcc.cliente.retrieve', compact(['clients']));
     }
-    public function update(){}
-    public function delete(){}
-    public function save(Request $request)
+    public function update(int $id){
+
+        /**
+         * @global $cliente Model
+         */
+        $cliente = Client::find($id);
+
+        if(!$cliente){
+            abort(404);
+        }
+
+        return view('tcc.cliente.update', compact(['cliente']));
+
+    }
+    public function delete($id)
     {
 
-        $client = new Client(); //        $client->forceFill($request->post('data'));
+        /**
+         * @global $cliente Model
+         */
+        $cliente = Client::find($id);
 
-        if(isset($request->data['id']))
-            $client->id = $request->data['id'];
+        if(!$cliente){
+            abort(404);
+        }
+
+        $cliente->delete();
+
+        return redirect()->to('/admin/clientes');
+
+    }
+    public function save(Request $request)
+    {
+        if(isset($request->data['id'])){
+            $client = Client::find($request->data['id']);
+            if(!$client){
+                abort(404);
+            }
+        } else {
+            $client = new Client(); //        $client->forceFill($request->post('data'));
+        }
 
         $client->name = $request->data['name'];
         $client->email = $request->data['email'];

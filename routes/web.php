@@ -262,7 +262,8 @@ Route::group(['prefix'=>'/admin'], function () {
 
     Route::get('/clientes', 'Admin\ClientController@retrieve');
     Route::get('/clientes/cadastrar', 'Admin\ClientController@create');
-    Route::get('/clientes/editar/{id}', 'Admin\ClientController@update');
+    Route::get('/clientes/{id}/editar', 'Admin\ClientController@update');
+    Route::get('/clientes/{id}/delete', 'Admin\ClientController@delete');
 
     // salva cliente
     Route::post('/clientes/gravar', 'Admin\ClientController@save');
